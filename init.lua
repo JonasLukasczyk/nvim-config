@@ -1,5 +1,7 @@
 require("config.lazy")
 
+vim.g.mapleader = " "  -- sets leader to space
+
 -- ============================================================================
 -- Autocommands & plugin-dependent setup (use VeryLazy event)
 -- ============================================================================
@@ -127,6 +129,20 @@ vim.opt.splitright = true
 vim.keymap.set("i", "<End>", "<C-o>$")
 vim.keymap.set("i", "<C-v>", '<C-r>+', { noremap = true, silent = true })
 
+-- Use black hole register by default
+vim.keymap.set("n", "d", '"_d', { noremap = true })
+vim.keymap.set("n", "x", '"_x', { noremap = true })
+vim.keymap.set("n", "X", '"_X', { noremap = true })
+vim.keymap.set("v", "d", '"_d', { noremap = true })
+vim.keymap.set("v", "x", '"_x', { noremap = true })
+
+-- Leader-prefixed versions use default behavior
+vim.keymap.set("n", "<leader>d", "d", { noremap = true })
+vim.keymap.set("n", "<leader>x", "x", { noremap = true })
+vim.keymap.set("n", "<leader>X", "X", { noremap = true })
+vim.keymap.set("v", "<leader>d", "d", { noremap = true })
+vim.keymap.set("v", "<leader>x", "x", { noremap = true })
+
 -- Search highlight clear
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>")
 
@@ -135,9 +151,6 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- Delete without yanking
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
